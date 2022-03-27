@@ -1,7 +1,7 @@
-package com.bookStudy.boo.springboot.config.auth.dto;
+package bebeShare.config.auth.dto;
 
-import com.bookStudy.boo.springboot.domain.user.Role;
-import com.bookStudy.boo.springboot.domain.user.User;
+import bebeShare.domain.user.Role;
+import bebeShare.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -12,6 +12,7 @@ public class OAuthAttributes {
 
     private Map<String, Object> attributes;
     private String nameAttributeKey;
+    private String id;
     private String name;
     private String email;
     private String picture;
@@ -61,7 +62,7 @@ public class OAuthAttributes {
                 .name(name)
                 .email(email)
                 .picture(picture)
-                .role(Role.GUEST)
+//                .role(Role.GUEST)
                 .build();
     }
 }

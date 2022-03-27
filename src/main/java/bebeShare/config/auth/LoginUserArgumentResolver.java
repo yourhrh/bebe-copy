@@ -1,6 +1,6 @@
-package com.bookStudy.boo.springboot.config.auth;
+package bebeShare.config.auth;
 
-import com.bookStudy.boo.springboot.config.auth.dto.SessionUser;
+import bebeShare.config.auth.dto.SessionUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;

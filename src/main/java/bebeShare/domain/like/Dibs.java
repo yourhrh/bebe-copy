@@ -1,13 +1,12 @@
 package bebeShare.domain.like;
 
 
+import bebeShare.domain.product.Product;
+import bebeShare.domain.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor
@@ -16,15 +15,15 @@ public class Dibs {
 
     @Id
     @GeneratedValue
-    @Column(name = "likdId")
+    @Column(name = "dibsId")
     private Long Id;
 
-//    private Long productId;
-
-//    private Long memberId;
-
-
+    @ManyToOne
+    @JoinColumn(name = "productId")
+    private Product product;
 
 
-
+    @ManyToOne
+    @JoinColumn(name = "memberId")
+    private User user;
 }

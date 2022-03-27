@@ -1,6 +1,5 @@
-package com.bookStudy.boo.springboot.config;
+package bebeShare.config.auth;
 
-import com.bookStudy.boo.springboot.config.auth.LoginUserArgumentResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;

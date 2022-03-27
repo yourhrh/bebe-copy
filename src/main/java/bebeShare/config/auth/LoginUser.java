@@ -1,4 +1,6 @@
-package com.bookStudy.boo.springboot.config.auth;
+package bebeShare.config.auth;
+
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

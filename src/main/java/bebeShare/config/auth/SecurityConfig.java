@@ -1,10 +1,13 @@
-package com.bookStudy.boo.springboot.config.auth;
+package bebeShare.config.auth;
 
-import com.bookStudy.boo.springboot.domain.user.Role;
+import bebeShare.domain.user.Role;
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+
 
 @RequiredArgsConstructor
 @EnableWebSecurity
@@ -21,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()
-                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
+//                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
                 .anyRequest().authenticated()
                 .and()
                 .logout()

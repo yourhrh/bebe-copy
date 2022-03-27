@@ -1,4 +1,4 @@
-package com.bookStudy.boo.springboot.domain.user;
+package bebeShare.domain.user;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
