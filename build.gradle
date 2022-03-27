@@ -5,7 +5,7 @@ plugins {
     id 'java'
 }
 
-group 'com.book'
+group 'Couch-Coders-7th'
 version '1.0.1-SNAPSHOT'+ new Date().format("yyyyMMddHHmmss")
 sourceCompatibility = 1.8
 
