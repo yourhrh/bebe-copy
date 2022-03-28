@@ -46,6 +46,7 @@ public class MemberApiController {
 
     @GetMapping("/comments")
     public List<MemberCommentResponseDto> comments(@PathVariable Long id){
+        System.out.println("test");
         return userService.comments(id);
     }
 
