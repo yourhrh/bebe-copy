@@ -2,10 +2,7 @@ package bebeShare.web;
 
 import bebeShare.service.UserService;
 import bebeShare.web.dto.PostsResponseDto;
-import bebeShare.web.userDto.GiveInfoResponseDto;
-import bebeShare.web.userDto.LikeInfoResponseDto;
-import bebeShare.web.userDto.ShareInfoResponseDto;
-import bebeShare.web.userDto.UserResponseDto;
+import bebeShare.web.userDto.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,5 +44,9 @@ public class MemberApiController {
     }
 
 
+    @GetMapping("/comments")
+    public List<MemberCommentResponseDto> comments(@PathVariable Long id){
+        return userService.comments(id);
+    }
 
 }

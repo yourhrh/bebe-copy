@@ -2,10 +2,7 @@ package bebeShare.service;
 
 import bebeShare.domain.user.User;
 import bebeShare.domain.user.UserRepository;
-import bebeShare.web.userDto.GiveInfoResponseDto;
-import bebeShare.web.userDto.LikeInfoResponseDto;
-import bebeShare.web.userDto.ShareInfoResponseDto;
-import bebeShare.web.userDto.UserResponseDto;
+import bebeShare.web.userDto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,5 +33,9 @@ public class UserService {
 
     public List<LikeInfoResponseDto> likeInfo(Long id) {
         return userRepository.likeInfo(id);
+    }
+
+    public List<MemberCommentResponseDto> comments(Long id) {
+        return userRepository.comments(id);
     }
 }
