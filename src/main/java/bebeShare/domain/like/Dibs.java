@@ -3,6 +3,7 @@ package bebeShare.domain.like;
 
 import bebeShare.domain.product.Product;
 import bebeShare.domain.user.User;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -26,4 +27,11 @@ public class Dibs {
     @ManyToOne
     @JoinColumn(name = "memberId")
     private User user;
+
+
+    @Builder
+    public Dibs(User user , Product product) {
+        this.user = user;
+        this.product = product;
+    }
 }

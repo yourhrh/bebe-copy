@@ -1,6 +1,7 @@
 package bebeShare.domain.user;
 
 import bebeShare.BaseEntity;
+import bebeShare.domain.product.Product;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,8 @@ import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @ToString
 @Getter
@@ -30,9 +33,12 @@ public class User extends BaseEntity {
     @Column
     private String picture;
 
-//    @Enumerated(EnumType.STRING)
-//    @Column(nullable = false)
-//    private Role role;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
+
+//    @OneToMany(mappedBy = "user" , targetEntity= Product.class)
+//    private List<User> users = new ArrayList<>();
 
 
     private Integer shareCnt;
@@ -41,11 +47,11 @@ public class User extends BaseEntity {
 
 
     @Builder
-    public User(String name, String email, String picture) {
+    public User(String name, String email, String picture, Role role) {
         this.name = name;
         this.email = email;
         this.picture = picture;
-//        this.role = role;
+        this.role = role;
         this.shareCnt = 0;
         this.giveCnt = 0;
         this.shareChanceCnt = 3;

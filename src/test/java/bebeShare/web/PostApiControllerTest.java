@@ -4,7 +4,6 @@ import bebeShare.domain.posts.Posts;
 import bebeShare.domain.posts.PostsRepository;
 import bebeShare.web.dto.PostSaveRequestsDto;
 import bebeShare.web.dto.PostUpdateRequestsDto;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.After;

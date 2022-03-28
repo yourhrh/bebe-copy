@@ -1,8 +1,13 @@
 package bebeShare;
 
 
+import bebeShare.domain.comment.Comment;
+import bebeShare.domain.comment.CommentRepository;
+import bebeShare.domain.like.Dibs;
+import bebeShare.domain.like.DibsRepository;
 import bebeShare.domain.product.Product;
 import bebeShare.domain.product.ProductRepository;
+import bebeShare.domain.user.Role;
 import bebeShare.domain.user.User;
 import bebeShare.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +21,8 @@ public class InitClass {
 
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
+    private final DibsRepository dibsRepository;
+    private final CommentRepository commentRepository;
 
 
 
@@ -26,6 +33,23 @@ public class InitClass {
                 .name("test")
                 .picture("/fake/path")
                 .email("test@naver.com")
+                .role(Role.USER)
+                .build()
+        );
+
+        User initUser2 = userRepository.save(User.builder()
+                .name("test")
+                .picture("/fake/path")
+                .email("test@naver.com")
+                .role(Role.USER)
+                .build()
+        );
+
+        User initUser3 = userRepository.save(User.builder()
+                .name("test")
+                .picture("/fake/path")
+                .email("test@naver.com")
+                .role(Role.USER)
                 .build()
         );
 
@@ -40,7 +64,63 @@ public class InitClass {
                             .productImage1("/fake/path" +i)
                             .productStatus("S")
                             .productCategory("100")
+                            .deleteYn("N")
                             .build());
         }
+
+        productRepository.save(Product.builder()
+                .user(initUser2)
+                .productName("product")
+                .productContent("content")
+                .productImage1("/fake/path")
+                .productStatus("N")
+                .productCategory("100")
+                .deleteYn("Y")
+                .build());
+
+        productRepository.save(Product.builder()
+                .user(initUser3)
+                .productName("product")
+                .productContent("content")
+                .productImage1("/fake/path")
+                .productStatus("C")
+                .productCategory("100")
+                .deleteYn("N")
+                .build());
+
+        Product dibsProduct = productRepository.save(Product.builder()
+                .user(initUser3)
+                .productName("product")
+                .productContent("content")
+                .productImage1("/fake/path")
+                .productStatus("S")
+                .productCategory("100")
+                .deleteYn("N")
+                .build());
+
+        Product commentProduct = productRepository.save(Product.builder()
+                .user(initUser3)
+                .productName("product")
+                .productContent("content")
+                .productImage1("/fake/path")
+                .productStatus("C")
+                .productCategory("100")
+                .deleteYn("N")
+                .build());
+
+
+        dibsRepository.save(Dibs.builder()
+                        .user(initUser2)
+                        .product(dibsProduct)
+                .build());
+
+        commentRepository.save(
+                Comment.builder()
+                        .user(initUser3)
+                        .product(commentProduct)
+                        .commentContent("tset !!!")
+                        .deleteYn("N")
+                        .commentStatus("100").build()
+        );
     }
 }

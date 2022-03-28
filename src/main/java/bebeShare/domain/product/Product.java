@@ -1,26 +1,25 @@
 package bebeShare.domain.product;
 
 
+import bebeShare.BaseEntity;
 import bebeShare.domain.user.User;
-import bebeShare.domain.user.UserRepository;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.*;
 
 import javax.persistence.*;
 
+@ToString(of = {"id", "productName", "productContent", "productImage1", "productImage2", "productImage3", "productStatus", "productCategory", "deleteYn"})
 @Getter
 @NoArgsConstructor
 @Table(name = "Product")
 @Entity
-public class Product {
+public class Product extends BaseEntity {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "productId")
     private Long Id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "memberId")
     private User user;
 
@@ -40,20 +39,21 @@ public class Product {
 
     private String deleteYn;
 
-    private String shareId;
+    private Long shareId;
 
 
     @Builder
-    public Product(User user , String productName , String productContent ,
-                   String productImage1 , String productStatus , String productCategory ){
+    public Product(User user, String productName, String productContent,
+                   String productImage1, String productStatus, String productCategory ,String deleteYn) {
         this.user = user;
         this.productName = productName;
         this.productContent = productContent;
         this.productImage2 = productImage1;
         this.productImage3 = productImage1;
         this.productImage1 = productImage1;
-        this. productStatus = productStatus;
+        this.productStatus = productStatus;
         this.productCategory = productCategory;
+        this.deleteYn = deleteYn;
     }
 
 }
