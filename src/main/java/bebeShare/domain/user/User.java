@@ -37,8 +37,8 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private Role role;
 
-//    @OneToMany(mappedBy = "user" , targetEntity= Product.class)
-//    private List<User> users = new ArrayList<>();
+    @OneToMany(mappedBy = "user" , targetEntity= Product.class)
+    private List<User> users = new ArrayList<>();
 
 
     private Integer shareCnt;
