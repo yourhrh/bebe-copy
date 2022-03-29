@@ -54,8 +54,6 @@ public class InitClass {
                 .build());
 
         product1.addUser(initUser);
-
-
         Product product2 = productRepository.save(Product.builder()
                 .user(initUser)
                 .productName("product2")
