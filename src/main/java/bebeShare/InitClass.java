@@ -1,6 +1,8 @@
 package bebeShare;
 
 
+import bebeShare.domain.code.Code;
+import bebeShare.domain.code.CodeRepository;
 import bebeShare.domain.comment.Comment;
 import bebeShare.domain.comment.CommentRepository;
 import bebeShare.domain.like.Dibs;
@@ -12,18 +14,20 @@ import bebeShare.domain.user.User;
 import bebeShare.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 
 @Component
 @RequiredArgsConstructor
+@Transactional
 public class InitClass {
 
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
     private final DibsRepository dibsRepository;
     private final CommentRepository commentRepository;
-
+    private final CodeRepository codeRepository;
 
 
     @PostConstruct
@@ -37,61 +41,41 @@ public class InitClass {
                 .build()
         );
 
-        User initUser2 = userRepository.save(User.builder()
-                .name("test")
-                .picture("/fake/path")
-                .email("test@naver.com")
-                .role(Role.USER)
-                .build()
-        );
 
-        User initUser3 = userRepository.save(User.builder()
-                .name("test")
-                .picture("/fake/path")
-                .email("test@naver.com")
-                .role(Role.USER)
-                .build()
-        );
+        Product product1 = productRepository.save(Product.builder()
+                .user(initUser)
+                .productName("product1")
+                .productContent("content1")
+                .productImage1("/fake/path1")
+                .productStatus("S")
+                .productCategory("100")
+                .deleteYn("N")
+                .shareId(initUser.getId())
+                .build());
 
-
-        Product product = new Product();
-
-        for(int i=0; i< 5; i++){
-            productRepository.save(Product.builder()
-                            .user(initUser)
-                            .productName("product"+i)
-                            .productContent("content"+i)
-                            .productImage1("/fake/path" +i)
-                            .productImage2("/fake2/path" +i)
-                            .productImage3("/fake3/path" +i)
-                            .productStatus("S")
-                            .productCategory("100")
-                            .deleteYn("N")
-                            .build());
-        }
-
-        productRepository.save(Product.builder()
-                .user(initUser2)
-                .productName("product")
-                .productContent("content")
-                .productImage1("/fake/path")
+        product1.addUser(initUser);
+        Product product2 = productRepository.save(Product.builder()
+                .user(initUser)
+                .productName("product2")
+                .productContent("content2")
+                .productImage1("/fake/path2")
                 .productStatus("N")
                 .productCategory("100")
                 .deleteYn("Y")
                 .build());
 
-        productRepository.save(Product.builder()
-                .user(initUser3)
-                .productName("product")
-                .productContent("content")
-                .productImage1("/fake/path")
+        Product product3 = productRepository.save(Product.builder()
+                .user(initUser)
+                .productName("product3")
+                .productContent("content3")
+                .productImage1("/fake/path3")
                 .productStatus("C")
                 .productCategory("100")
                 .deleteYn("N")
                 .build());
 
         Product dibsProduct = productRepository.save(Product.builder()
-                .user(initUser3)
+                .user(initUser)
                 .productName("product")
                 .productContent("content")
                 .productImage1("/fake/path")
@@ -101,7 +85,7 @@ public class InitClass {
                 .build());
 
         Product commentProduct = productRepository.save(Product.builder()
-                .user(initUser3)
+                .user(initUser)
                 .productName("product")
                 .productContent("content")
                 .productImage1("/fake/path")
@@ -110,19 +94,38 @@ public class InitClass {
                 .deleteYn("N")
                 .build());
 
-
-        dibsRepository.save(Dibs.builder()
-                        .user(initUser2)
-                        .product(dibsProduct)
-                .build());
-
         commentRepository.save(
                 Comment.builder()
-                        .user(initUser3)
+                        .user(initUser)
                         .product(commentProduct)
                         .commentContent("tset !!!")
                         .deleteYn("N")
                         .commentStatus("100").build()
+        );
+
+        codeRepository.save(
+                Code.builder()
+                        .id(1L)
+                        .code("100")
+                        .codeName("의류")
+                        .useYn("Y")
+                        .build()
+        );
+        codeRepository.save(
+                Code.builder()
+                        .id(2L)
+                        .code("100")
+                        .codeName("장난감")
+                        .useYn("Y")
+                        .build()
+        );
+        codeRepository.save(
+                Code.builder()
+                        .id(3L)
+                        .code("200")
+                        .codeName("전자기기")
+                        .useYn("Y")
+                        .build()
         );
     }
 }
