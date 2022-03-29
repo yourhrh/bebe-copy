@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Product extends BaseEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "productId")
     private Long Id;
 
@@ -44,7 +44,7 @@ public class Product extends BaseEntity {
 
     @Builder
     public Product(User user, String productName, String productContent,
-                   String productImage1, String productStatus, String productCategory ,String deleteYn) {
+                   String productImage1, String productStatus, String productCategory ,String deleteYn, Long shareId) {
         this.user = user;
         this.productName = productName;
         this.productContent = productContent;
@@ -54,6 +54,13 @@ public class Product extends BaseEntity {
         this.productStatus = productStatus;
         this.productCategory = productCategory;
         this.deleteYn = deleteYn;
+        this.shareId = shareId;
+
+    }
+
+    public void addUser(User user){
+        this.user = user;
+        user.getProducts().add(this);
     }
 
 }

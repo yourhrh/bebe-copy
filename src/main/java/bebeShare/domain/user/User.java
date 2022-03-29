@@ -20,7 +20,7 @@ import java.util.List;
 public class User extends BaseEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "memberId")
     private Long id;
 
@@ -37,7 +37,7 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private Role role;
 
-    @OneToMany(mappedBy = "user" , targetEntity= Product.class)
+    @OneToMany(mappedBy = "user")
     private List<Product> products = new ArrayList<>();
 
 
