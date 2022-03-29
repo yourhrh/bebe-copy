@@ -3,8 +3,9 @@ package bebeShare.web.dto;
 import bebeShare.domain.product.Product;
 import bebeShare.domain.user.User;
 import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 public class ProductCreateRequestDto {
     private User user;
     private String productName;
