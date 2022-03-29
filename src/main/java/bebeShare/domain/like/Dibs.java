@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Dibs {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "dibsId")
     private Long Id;
 
@@ -32,6 +32,11 @@ public class Dibs {
     @Builder
     public Dibs(User user , Product product) {
         this.user = user;
+        this.product = product;
+    }
+
+    public void addUserAndProduct(User user , Product product){
+        this.user =  user;
         this.product = product;
     }
 }

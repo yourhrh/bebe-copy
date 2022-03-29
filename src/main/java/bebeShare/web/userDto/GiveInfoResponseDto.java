@@ -10,20 +10,16 @@ import java.time.LocalDateTime;
 @Getter
 public class GiveInfoResponseDto {
 
-    private Long Id;
+    private Long productId;
     private String productName;
     private String productImage1;
-    private String productImage2;
-    private String productImage3;
     private LocalDateTime insertDt;
 
 
     public GiveInfoResponseDto(Product product) {
-        this.Id = product.getId();
+        this.productId = product.getId();
         this.productName   = product.getProductName();
         this.productImage1 = product.getProductImage1();
-        this.productImage2 = product.getProductImage2();
-        this.productImage3 = product.getProductImage3();
         this.insertDt      = product.getCreatedDate();
     }
 

@@ -41,35 +41,35 @@ public class UserRepositoryTest {
 
     }
 
-    @Test
-    public void 나눔한내역조회() {
-        List<ShareInfoResponseDto> products = userRepository.shareInfo(1L,"C");
-        for (ShareInfoResponseDto shareInfo : products) {
-            System.out.println("shareInfo:" +shareInfo.toString());
-        }
-    }
-
-    @Test
-    public void 나눔받은내역조회() {
-        List<GiveInfoResponseDto> products = userRepository.giveInfo(3L,"C");
-        for (GiveInfoResponseDto giveInfo : products) {
-            System.out.println("giveInfo:" +giveInfo.toString());
-        }
-    }
-
-    @Test
-    public void 찜목록조회() {
-        List<LikeInfoResponseDto> products = userRepository.likeInfo(2L);
-        for (LikeInfoResponseDto likeInfo : products) {
-            System.out.println("likeInfo:" +likeInfo.toString());
-        }
-    }
-
-    @Test
-    public void 댓글목록조회() {
-        List<MemberCommentResponseDto> products = userRepository.comments(3L);
-        for (MemberCommentResponseDto comment : products) {
-            System.out.println("comment:" +comment.toString());
-        }
-    }
+//    @Test
+//    public void 나눔한내역조회() {
+//        List<ShareInfoResponseDto> products = userRepository.shareInfo(1L,"C");
+//        for (ShareInfoResponseDto shareInfo : products) {
+//            System.out.println("shareInfo:" +shareInfo.toString());
+//        }
+//    }
+//
+//    @Test
+//    public void 나눔받은내역조회() {
+//        List<GiveInfoResponseDto> products = userRepository.giveInfo(3L,"C");
+//        for (GiveInfoResponseDto giveInfo : products) {
+//            System.out.println("giveInfo:" +giveInfo.toString());
+//        }
+//    }
+//
+//    @Test
+//    public void 찜목록조회() {
+//        List<LikeInfoResponseDto> products = userRepository.likeInfo(2L);
+//        for (LikeInfoResponseDto likeInfo : products) {
+//            System.out.println("likeInfo:" +likeInfo.toString());
+//        }
+//    }
+//
+//    @Test
+//    public void 댓글목록조회() {
+//        List<MemberCommentResponseDto> products = userRepository.comments(3L);
+//        for (MemberCommentResponseDto comment : products) {
+//            System.out.println("comment:" +comment.toString());
+//        }
+//    }
 }
