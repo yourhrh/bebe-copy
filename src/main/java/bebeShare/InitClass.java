@@ -62,6 +62,8 @@ public class InitClass {
                             .productName("product"+i)
                             .productContent("content"+i)
                             .productImage1("/fake/path" +i)
+                            .productImage2("/fake2/path" +i)
+                            .productImage3("/fake3/path" +i)
                             .productStatus("S")
                             .productCategory("100")
                             .deleteYn("N")
