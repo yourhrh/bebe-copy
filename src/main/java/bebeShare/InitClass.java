@@ -1,6 +1,8 @@
 package bebeShare;
 
 
+import bebeShare.domain.code.Code;
+import bebeShare.domain.code.CodeRepository;
 import bebeShare.domain.comment.Comment;
 import bebeShare.domain.comment.CommentRepository;
 import bebeShare.domain.like.Dibs;
@@ -23,7 +25,7 @@ public class InitClass {
     private final ProductRepository productRepository;
     private final DibsRepository dibsRepository;
     private final CommentRepository commentRepository;
-
+    private final CodeRepository codeRepository;
 
 
     @PostConstruct
@@ -58,14 +60,14 @@ public class InitClass {
 
         for(int i=0; i< 5; i++){
             productRepository.save(Product.builder()
-                            .user(initUser)
-                            .productName("product"+i)
-                            .productContent("content"+i)
-                            .productImage1("/fake/path" +i)
-                            .productStatus("S")
-                            .productCategory("100")
-                            .deleteYn("N")
-                            .build());
+                    .user(initUser)
+                    .productName("product"+i)
+                    .productContent("content"+i)
+                    .productImage1("/fake/path" +i)
+                    .productStatus("S")
+                    .productCategory("100")
+                    .deleteYn("N")
+                    .build());
         }
 
         productRepository.save(Product.builder()
@@ -110,8 +112,8 @@ public class InitClass {
 
 
         dibsRepository.save(Dibs.builder()
-                        .user(initUser2)
-                        .product(dibsProduct)
+                .user(initUser2)
+                .product(dibsProduct)
                 .build());
 
         commentRepository.save(
@@ -121,6 +123,31 @@ public class InitClass {
                         .commentContent("tset !!!")
                         .deleteYn("N")
                         .commentStatus("100").build()
+        );
+
+        codeRepository.save(
+                Code.builder()
+                        .id(1L)
+                        .code("100")
+                        .codeName("의류")
+                        .useYn("Y")
+                        .build()
+        );
+        codeRepository.save(
+                Code.builder()
+                        .id(2L)
+                        .code("100")
+                        .codeName("장난감")
+                        .useYn("Y")
+                        .build()
+        );
+        codeRepository.save(
+                Code.builder()
+                        .id(3L)
+                        .code("200")
+                        .codeName("전자기기")
+                        .useYn("Y")
+                        .build()
         );
     }
 }
