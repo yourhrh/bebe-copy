@@ -1,6 +1,8 @@
 package bebeShare;
 
 
+import bebeShare.domain.code.Code;
+import bebeShare.domain.code.CodeRepository;
 import bebeShare.domain.comment.Comment;
 import bebeShare.domain.comment.CommentRepository;
 import bebeShare.domain.like.Dibs;
@@ -25,7 +27,7 @@ public class InitClass {
     private final ProductRepository productRepository;
     private final DibsRepository dibsRepository;
     private final CommentRepository commentRepository;
-
+    private final CodeRepository codeRepository;
 
 
     @PostConstruct
@@ -94,12 +96,6 @@ public class InitClass {
                 .deleteYn("N")
                 .build());
 
-
-        dibsRepository.save(Dibs.builder()
-                        .user(initUser)
-                        .product(dibsProduct)
-                .build());
-
         commentRepository.save(
                 Comment.builder()
                         .user(initUser)
@@ -107,6 +103,31 @@ public class InitClass {
                         .commentContent("tset !!!")
                         .deleteYn("N")
                         .commentStatus("100").build()
+        );
+
+        codeRepository.save(
+                Code.builder()
+                        .id(1L)
+                        .code("100")
+                        .codeName("의류")
+                        .useYn("Y")
+                        .build()
+        );
+        codeRepository.save(
+                Code.builder()
+                        .id(2L)
+                        .code("100")
+                        .codeName("장난감")
+                        .useYn("Y")
+                        .build()
+        );
+        codeRepository.save(
+                Code.builder()
+                        .id(3L)
+                        .code("200")
+                        .codeName("전자기기")
+                        .useYn("Y")
+                        .build()
         );
     }
 }
