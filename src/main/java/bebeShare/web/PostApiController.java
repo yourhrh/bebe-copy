@@ -14,16 +14,20 @@ public class PostApiController {
 
     private final PostsService postsService;
 
+
+    @ResponseBody
     @PostMapping("/api/v1/posts")
     public Long save(@RequestBody PostSaveRequestsDto requestDto){
         return postsService.save(requestDto);
     }
 
+    @ResponseBody
     @PutMapping("/api/v1/posts/{id}")
     public Long update(@PathVariable Long id,@RequestBody PostUpdateRequestsDto requestDto){
         return postsService.update(id,requestDto);
     }
 
+    @ResponseBody
     @GetMapping("/api/v1/posts/{id}")
     public PostsResponseDto findById(@PathVariable Long id){
         return postsService.findById(id);
