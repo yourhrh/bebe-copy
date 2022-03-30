@@ -4,15 +4,13 @@ package bebeShare.web.dto;
 import bebeShare.domain.comment.Comment;
 import bebeShare.domain.product.Product;
 import bebeShare.domain.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class CommentUpdateRequestsDto {
     private Long productId;
     private Long memberId;
