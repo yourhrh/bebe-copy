@@ -17,7 +17,7 @@ public class Dibs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "dibsId")
-    private Long Id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "productId")
