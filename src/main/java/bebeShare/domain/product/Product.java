@@ -25,6 +25,7 @@ public class Product extends BaseEntity {
 
     private String productName;
 
+  
     private String productContent;
 
     private String productImage1;
@@ -43,13 +44,13 @@ public class Product extends BaseEntity {
 
 
     @Builder
-    public Product(User user, String productName, String productContent,
-                   String productImage1, String productStatus, String productCategory ,String deleteYn, Long shareId) {
+    public Product(User user, String productName, String productContent,String productImage1, String productImage2, String productImage3, String productStatus, String productCategory ,String deleteYn) {
+
         this.user = user;
         this.productName = productName;
         this.productContent = productContent;
-        this.productImage2 = productImage1;
-        this.productImage3 = productImage1;
+        this.productImage2 = productImage2;
+        this.productImage3 = productImage3;
         this.productImage1 = productImage1;
         this.productStatus = productStatus;
         this.productCategory = productCategory;
@@ -61,6 +62,19 @@ public class Product extends BaseEntity {
     public void addUser(User user){
         this.user = user;
         user.getProducts().add(this);
+    }
+
+    public void update(User user, String name, String productName, String productContent,
+                       String productImage1, String productImage2, String productImage3, String productStatus, String productCategory) {
+        this.user = user;
+        this.productName = productName;
+        this.productContent = productContent;
+        this.productImage2 = productImage2;
+        this.productImage3 = productImage3;
+        this.productImage1 = productImage1;
+        this.productStatus = productStatus;
+        this.productCategory = productCategory;
+        // 수정날짜가 필요한가?
     }
 
 }
