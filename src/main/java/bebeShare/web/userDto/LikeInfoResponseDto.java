@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 public class LikeInfoResponseDto {
 
-    private Long Id;
+    private Long id;
     private String productName;
     private String productImage1;
     private String productImage2;
@@ -19,7 +19,7 @@ public class LikeInfoResponseDto {
 
 
     public LikeInfoResponseDto(Product product) {
-        this.Id = product.getId();
+        this.id = product.getId();
         this.productName   = product.getProductName();
         this.productImage1 = product.getProductImage1();
         this.productImage2 = product.getProductImage2();
