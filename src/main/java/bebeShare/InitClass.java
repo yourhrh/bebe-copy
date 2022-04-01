@@ -50,7 +50,7 @@ public class InitClass {
                 .productStatus("S")
                 .productCategory("100")
                 .deleteYn("N")
-                .shareId(initUser.getId())
+//                .shareId(initUser.getId())
                 .build());
 
         product1.addUser(initUser);
@@ -103,29 +103,29 @@ public class InitClass {
                         .commentStatus("100").build()
         );
 
-        codeRepository.save(
-                Code.builder()
-                        .id(1L)
-                        .code("100")
-                        .codeName("의류")
-                        .useYn("Y")
-                        .build()
-        );
-        codeRepository.save(
-                Code.builder()
-                        .id(2L)
-                        .code("100")
-                        .codeName("장난감")
-                        .useYn("Y")
-                        .build()
-        );
-        codeRepository.save(
-                Code.builder()
-                        .id(3L)
-                        .code("200")
-                        .codeName("전자기기")
-                        .useYn("Y")
-                        .build()
-        );
+//        codeRepository.save(
+//                Code.builder()
+//                        .id(1L)
+//                        .code("100")
+//                        .codeName("의류")
+//                        .useYn("Y")
+//                        .build()
+//        );
+//        codeRepository.save(
+//                Code.builder()
+//                        .id(2L)
+//                        .code("100")
+//                        .codeName("장난감")
+//                        .useYn("Y")
+//                        .build()
+//        );
+//        codeRepository.save(
+//                Code.builder()
+//                        .id(3L)
+//                        .code("200")
+//                        .codeName("전자기기")
+//                        .useYn("Y")
+//                        .build()
+//        );
     }
 }
