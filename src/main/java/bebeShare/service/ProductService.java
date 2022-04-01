@@ -1,10 +1,12 @@
 package bebeShare.service;
 
+import bebeShare.domain.posts.Posts;
 import bebeShare.domain.product.Product;
 import bebeShare.domain.product.ProductRepository;
 import bebeShare.domain.user.UserRepository;
 import bebeShare.exception.CustomException;
 import bebeShare.exception.ErrorCode;
+import bebeShare.web.dto.PostsResponseDto;
 import bebeShare.web.dto.ProductCreateRequestDto;
 import bebeShare.web.dto.ProductResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +37,14 @@ public class ProductService {
         Sort sort = Sort.by(Sort.Direction.DESC, "id", "createdDate");
         List<Product> list = productRepository.findAll(sort);
         return list.stream().map(ProductResponseDto::new).collect(Collectors.toList());
+    }
+
+
+    // 상품 게시글 상세 조회
+    public ProductResponseDto findById(Long productId) {
+        Product entity = productRepository.findById(productId).orElseThrow(()
+                -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
+        return new ProductResponseDto(entity);
     }
 
     // 상품 게시글 수정
