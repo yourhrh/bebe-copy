@@ -1,12 +1,10 @@
 package bebeShare.service;
 
-import bebeShare.domain.posts.Posts;
 import bebeShare.domain.product.Product;
 import bebeShare.domain.product.ProductRepository;
 import bebeShare.domain.user.UserRepository;
 import bebeShare.exception.CustomException;
 import bebeShare.exception.ErrorCode;
-import bebeShare.web.dto.PostsResponseDto;
 import bebeShare.web.dto.ProductCreateRequestDto;
 import bebeShare.web.dto.ProductResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -39,22 +37,14 @@ public class ProductService {
         return list.stream().map(ProductResponseDto::new).collect(Collectors.toList());
     }
 
-
-    // 상품 게시글 상세 조회
-    public ProductResponseDto findById(Long productId) {
-        Product entity = productRepository.findById(productId).orElseThrow(()
-                -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
-        return new ProductResponseDto(entity);
-    }
-
     // 상품 게시글 수정
     @Transactional
-    public Long update(final ProductCreateRequestDto params) {
+    public Long update(final Long id, final ProductCreateRequestDto params) {
 
-        Product entity = productRepository.findById(params.getProductId()).orElseThrow(()
-                -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
+        Product entity = productRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
 
-        entity.update(params);
-        return params.getProductId();
+        entity.update( params.getUser(), params.getProductName(), params.getProductContent(), params.getProductCategory(),
+                params.getProductImage1(), params.getProductImage2(), params.getProductImage3(), params.getDeleteYn(), params.getProductStatus());
+        return id;
     }
 }
