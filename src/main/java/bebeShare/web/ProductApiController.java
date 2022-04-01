@@ -30,6 +30,14 @@ public class ProductApiController {
         return productService.findAll();
     }
 
+
+    // 상품 게시글 상세 조회
+    @ResponseBody
+    @GetMapping("/products/{productId}")
+    public ProductResponseDto findById(@PathVariable Long productId) {
+        return productService.findById(productId);
+    }
+
     // 상품 게시글 수정
     @PatchMapping("/products/{productId}")
     public Long save(@PathVariable final Long productId, @RequestBody final ProductCreateRequestDto params) {
@@ -40,5 +48,11 @@ public class ProductApiController {
     @GetMapping("/test")
     public String test() {
         throw new CustomException(ErrorCode.POSTS_NOT_FOUND);
+    }
+    
+    // 상품 게시글 삭제
+    @DeleteMapping("/products/{productId}")
+    public void delete(@PathVariable Long id){
+        productService.delete(id);
     }
 }

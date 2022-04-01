@@ -21,7 +21,8 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-     //상품 게시글 생성
+
+    //상품 게시글 생성
     @Transactional
     public Long save(final ProductCreateRequestDto params) {
 
@@ -40,11 +41,15 @@ public class ProductService {
     // 상품 게시글 수정
     @Transactional
     public Long update(final Long id, final ProductCreateRequestDto params) {
-
         Product entity = productRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
 
-        entity.update( params.getUser(), params.getProductName(), params.getProductContent(), params.getProductCategory(),
-                params.getProductImage1(), params.getProductImage2(), params.getProductImage3(), params.getDeleteYn(), params.getProductStatus());
-        return id;
+        entity.update(params);
+        return params.getProductId();
+    }
+
+    // 상품 게시글 삭제
+    @Transactional
+    public void delete(Long id) {
+        productRepository.deleteById(id);
     }
 }
