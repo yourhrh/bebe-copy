@@ -21,8 +21,6 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-
-
      //상품 게시글 생성
     @Transactional
     public Long save(final ProductCreateRequestDto params) {

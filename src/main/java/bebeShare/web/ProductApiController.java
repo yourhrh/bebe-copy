@@ -1,5 +1,7 @@
 package bebeShare.web;
 
+import bebeShare.exception.CustomException;
+import bebeShare.exception.ErrorCode;
 import bebeShare.service.ProductService;
 import bebeShare.web.dto.PostsResponseDto;
 import bebeShare.web.dto.ProductCreateRequestDto;
@@ -29,8 +31,14 @@ public class ProductApiController {
     }
 
     // 상품 게시글 수정
-    @PatchMapping("/Products/{productId}")
-    public Long save(@PathVariable final Long id, @RequestBody final ProductCreateRequestDto params) {
-        return productService.update(id, params);
+    @PatchMapping("/products/{productId}")
+    public Long save(@PathVariable final Long productId, @RequestBody final ProductCreateRequestDto params) {
+        return productService.update(productId, params);
+    }
+
+    // 예외 발생
+    @GetMapping("/test")
+    public String test() {
+        throw new CustomException(ErrorCode.POSTS_NOT_FOUND);
     }
 }
