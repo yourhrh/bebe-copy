@@ -42,6 +42,7 @@ public class ProductApiController {
     // 상품 게시글 수정
     @PatchMapping("/products")
     public Long update( @RequestBody final ProductCreateRequestDto params) {
+
         return productService.update(params);
     }
 
