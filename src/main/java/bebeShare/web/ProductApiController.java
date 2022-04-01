@@ -3,6 +3,7 @@ package bebeShare.web;
 import bebeShare.exception.CustomException;
 import bebeShare.exception.ErrorCode;
 import bebeShare.service.ProductService;
+import bebeShare.web.dto.PostUpdateRequestsDto;
 import bebeShare.web.dto.PostsResponseDto;
 import bebeShare.web.dto.ProductCreateRequestDto;
 import bebeShare.web.dto.ProductResponseDto;
@@ -24,16 +25,24 @@ public class ProductApiController {
         return productService.save(params);
     }
 
-    // 상품 게시글 조회
+    // 상품 게시글 전체 조회
     @GetMapping("/products")
     public List<ProductResponseDto> findAll() {
         return productService.findAll();
     }
 
+    
+    // 상품 게시글 상세 조회
+    @ResponseBody
+    @GetMapping("/products/{productId}")
+    public ProductResponseDto findById(@PathVariable Long productId) {
+        return productService.findById(productId);
+    }
+
     // 상품 게시글 수정
-    @PatchMapping("/products/{productId}")
-    public Long save(@PathVariable final Long productId, @RequestBody final ProductCreateRequestDto params) {
-        return productService.update(productId, params);
+    @PatchMapping("/products")
+    public Long update( @RequestBody final ProductCreateRequestDto params) {
+        return productService.update(params);
     }
 
     // 예외 발생
