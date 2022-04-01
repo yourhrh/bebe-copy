@@ -31,9 +31,9 @@ public class ProductApiController {
     }
 
     // 상품 게시글 수정
-    @PatchMapping("/products/{productId}")
-    public Long save(@PathVariable final Long productId, @RequestBody final ProductCreateRequestDto params) {
-        return productService.update(productId, params);
+    @PatchMapping("/products")
+    public Long update( @RequestBody final ProductCreateRequestDto params) {
+        return productService.update(params);
     }
 
     // 예외 발생

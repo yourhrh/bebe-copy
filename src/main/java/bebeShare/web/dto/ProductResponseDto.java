@@ -6,6 +6,7 @@ import lombok.Getter;
 
 @Getter
 public class ProductResponseDto {
+
     private User user;
     private String productName;
     private String productContent;
@@ -18,6 +19,7 @@ public class ProductResponseDto {
 
 
     public ProductResponseDto(Product entity) {
+
         this.user = entity.getUser();
         this.productName = entity.getProductName();
         this.productContent = entity.getProductContent();
