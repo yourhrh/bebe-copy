@@ -9,16 +9,18 @@ import bebeShare.domain.user.UserRepository;
 import bebeShare.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class CommentsService {
     private final CommentRepository commentRepository;
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
 
+    @Transactional
     public CommentResponseDto save(CommentSaveRequestsDto requestsDto) {
 
         User user = userRepository.findById(requestsDto.getMemberId()).orElseThrow(
@@ -33,6 +35,7 @@ public class CommentsService {
         return new CommentResponseDto(requestsDto.getProductId());
     }
 
+    @Transactional
     public CommentUpdateResponseDto update(Long productId, Long commentId, CommentUpdateRequestsDto updateRequestsDto) {
         commentRepository.findById(commentId).ifPresent(c -> {
             if (updateRequestsDto.getCommentContent() != null) {
@@ -43,6 +46,7 @@ public class CommentsService {
         return new CommentUpdateResponseDto(productId);
     }
 
+    @Transactional
     public CommentDeleteResponseDto delete(Long productId, Long commentId) {
         commentRepository.deleteById(commentId);
         return new CommentDeleteResponseDto(productId);

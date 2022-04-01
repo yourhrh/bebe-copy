@@ -15,7 +15,6 @@ public class CategoryApiController {
 
     @GetMapping("/categories")
     public void lookupCategory(@RequestParam String code){
-        System.out.println("CategoryController.lookupCategory");
         categoryService.lookup(code);
     }
 }
