@@ -12,12 +12,16 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CommentUpdateRequestsDto {
+    private User user;
+    private Product product;
     private Long productId;
     private Long memberId;
     private String commentContent;
+    private String deletYn;
+    private String commentStatus;
 
     @Builder
-    public Comment toEntity(User user, Product product){
+    public Comment toEntity(){
         return Comment.builder()
                 .user(user)
                 .product(product)
