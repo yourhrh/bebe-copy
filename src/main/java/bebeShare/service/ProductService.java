@@ -38,14 +38,24 @@ public class ProductService {
         return list.stream().map(ProductResponseDto::new).collect(Collectors.toList());
     }
 
+    // 상품 게시글 상세 조회
+    public ProductResponseDto findById(Long productId) {
+        Product entity = productRepository.findById(productId).orElseThrow(()
+                -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
+        return new ProductResponseDto(entity);
+    }
+
     // 상품 게시글 수정
     @Transactional
-    public Long update(final Long id, final ProductCreateRequestDto params) {
-        Product entity = productRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
+    public Long update(final ProductCreateRequestDto params) {
+
+        Product entity = productRepository.findById(params.getProductId()).orElseThrow(()
+                -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
 
         entity.update(params);
         return params.getProductId();
     }
+
 
     // 상품 게시글 삭제
     @Transactional
