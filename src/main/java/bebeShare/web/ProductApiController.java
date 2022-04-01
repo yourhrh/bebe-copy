@@ -3,7 +3,6 @@ package bebeShare.web;
 import bebeShare.exception.CustomException;
 import bebeShare.exception.ErrorCode;
 import bebeShare.service.ProductService;
-import bebeShare.web.dto.PostUpdateRequestsDto;
 import bebeShare.web.dto.PostsResponseDto;
 import bebeShare.web.dto.ProductCreateRequestDto;
 import bebeShare.web.dto.ProductResponseDto;
@@ -25,7 +24,7 @@ public class ProductApiController {
         return productService.save(params);
     }
 
-    // 상품 게시글 전체 조회
+    // 상품 게시글 조회
     @GetMapping("/products")
     public List<ProductResponseDto> findAll() {
         return productService.findAll();
@@ -42,7 +41,6 @@ public class ProductApiController {
     // 상품 게시글 수정
     @PatchMapping("/products")
     public Long update( @RequestBody final ProductCreateRequestDto params) {
-
         return productService.update(params);
     }
 
@@ -50,5 +48,11 @@ public class ProductApiController {
     @GetMapping("/test")
     public String test() {
         throw new CustomException(ErrorCode.POSTS_NOT_FOUND);
+    }
+    
+    // 상품 게시글 삭제
+    @DeleteMapping("/products/{productId}")
+    public void delete(@PathVariable Long id){
+        productService.delete(id);
     }
 }

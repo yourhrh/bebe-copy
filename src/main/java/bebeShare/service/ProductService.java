@@ -1,12 +1,10 @@
 package bebeShare.service;
 
-import bebeShare.domain.posts.Posts;
 import bebeShare.domain.product.Product;
 import bebeShare.domain.product.ProductRepository;
 import bebeShare.domain.user.UserRepository;
 import bebeShare.exception.CustomException;
 import bebeShare.exception.ErrorCode;
-import bebeShare.web.dto.PostsResponseDto;
 import bebeShare.web.dto.ProductCreateRequestDto;
 import bebeShare.web.dto.ProductResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +21,8 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-     //상품 게시글 생성
+
+    //상품 게시글 생성
     @Transactional
     public Long save(final ProductCreateRequestDto params) {
 
@@ -38,7 +37,6 @@ public class ProductService {
         List<Product> list = productRepository.findAll(sort);
         return list.stream().map(ProductResponseDto::new).collect(Collectors.toList());
     }
-
 
     // 상품 게시글 상세 조회
     public ProductResponseDto findById(Long productId) {
@@ -56,5 +54,12 @@ public class ProductService {
 
         entity.update(params);
         return params.getProductId();
+    }
+
+
+    // 상품 게시글 삭제
+    @Transactional
+    public void delete(Long id) {
+        productRepository.deleteById(id);
     }
 }

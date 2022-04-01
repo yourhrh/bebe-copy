@@ -46,6 +46,7 @@ public class Product extends BaseEntity {
 
     @Builder
     public Product(User user, String productName, String productContent,String productImage1, String productImage2, String productImage3, String productStatus, String productCategory ,String deleteYn) {
+
         this.user = user;
         this.productName = productName;
         this.productContent = productContent;
@@ -63,7 +64,6 @@ public class Product extends BaseEntity {
         this.user = user;
         user.getProducts().add(this);
     }
-
 
     public void update(ProductCreateRequestDto pro) {
         this.id = pro.getProductId();
