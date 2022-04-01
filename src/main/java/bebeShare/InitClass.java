@@ -50,7 +50,7 @@ public class InitClass {
                 .productStatus("S")
                 .productCategory("100")
                 .deleteYn("N")
-                .shareId(initUser.getId())
+//                .shareId(initUser.getId())
                 .build());
 
         product1.addUser(initUser);

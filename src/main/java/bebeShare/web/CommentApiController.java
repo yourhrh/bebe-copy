@@ -14,7 +14,7 @@ public class CommentApiController {
 
     private final CommentsService commentsService;
 
-
+    // 상품 댓글 등록
     @PostMapping("/{productId}/comments")
     public CommentResponseDto save(@PathVariable Long productId, @RequestBody CommentSaveRequestsDto requestsDto,
                                    @LoginUser SessionUser sessionUser) {
@@ -23,12 +23,13 @@ public class CommentApiController {
         return commentsService.save(requestsDto);
     }
 
+    // 상품 댓글 수정
     @PatchMapping("/{productId}/comments/{commentId}")
     public CommentUpdateResponseDto update(@PathVariable Long productId, @PathVariable Long commentId, @RequestBody CommentUpdateRequestsDto updateRequestsDto) {
         return commentsService.update(productId, commentId, updateRequestsDto);
     }
 
-
+    // 상품 댓글 삭제
     @DeleteMapping("/{productId}/comments/{commentId}")
     public CommentDeleteResponseDto delete(@PathVariable Long productId, @PathVariable Long commentId) {
         return commentsService.delete(productId, commentId);
