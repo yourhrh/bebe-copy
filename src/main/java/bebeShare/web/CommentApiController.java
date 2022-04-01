@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/api/v1/products")
 public class CommentApiController {
 
     private final CommentsService commentsService;
 
-    @PostMapping("/products/{productId}/comments")
+
+    @PostMapping("/{productId}/comments")
     public CommentResponseDto save(@PathVariable Long productId, @RequestBody CommentSaveRequestsDto requestsDto,
                                    @LoginUser SessionUser sessionUser) {
         requestsDto.setProductId(productId);
@@ -21,12 +23,13 @@ public class CommentApiController {
         return commentsService.save(requestsDto);
     }
 
-    @PatchMapping("/products/{productId}/comments/{commentId}")
+    @PatchMapping("/{productId}/comments/{commentId}")
     public CommentUpdateResponseDto update(@PathVariable Long productId, @PathVariable Long commentId, @RequestBody CommentUpdateRequestsDto updateRequestsDto) {
         return commentsService.update(productId, commentId, updateRequestsDto);
     }
 
-    @DeleteMapping("/products/{productId}/comments/{commentId}")
+
+    @DeleteMapping("/{productId}/comments/{commentId}")
     public CommentDeleteResponseDto delete(@PathVariable Long productId, @PathVariable Long commentId) {
         return commentsService.delete(productId, commentId);
     }

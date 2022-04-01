@@ -33,4 +33,10 @@ public class ProductApiController {
     public Long save(@PathVariable final Long id, @RequestBody final ProductCreateRequestDto params) {
         return productService.update(id, params);
     }
+    
+    // 상품 게시글 삭제
+    @DeleteMapping("/products/{productId}")
+    public void delete(@PathVariable Long id){
+        productService.delete(id);
+    }
 }

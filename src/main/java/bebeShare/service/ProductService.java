@@ -49,4 +49,9 @@ public class ProductService {
                 params.getProductImage1(), params.getProductImage2(), params.getProductImage3(), params.getDeleteYn(), params.getProductStatus());
         return id;
     }
+
+    @Transactional
+    public void delete(Long id){
+        productRepository.deleteById(id);
+    }
 }
