@@ -14,12 +14,12 @@ public class CommentApiController {
 
     private final CommentsService commentsService;
 
+
     @PostMapping("/{productId}/comments")
     public CommentResponseDto save(@PathVariable Long productId, @RequestBody CommentSaveRequestsDto requestsDto,
                                    @LoginUser SessionUser sessionUser) {
         requestsDto.setProductId(productId);
-        requestsDto.setMemberId(1L);
-//        requestsDto.setMemberId(sessionUser.getId());
+        requestsDto.setMemberId(sessionUser.getId());
         return commentsService.save(requestsDto);
     }
 
@@ -27,6 +27,7 @@ public class CommentApiController {
     public CommentUpdateResponseDto update(@PathVariable Long productId, @PathVariable Long commentId, @RequestBody CommentUpdateRequestsDto updateRequestsDto) {
         return commentsService.update(productId, commentId, updateRequestsDto);
     }
+
 
     @DeleteMapping("/{productId}/comments/{commentId}")
     public CommentDeleteResponseDto delete(@PathVariable Long productId, @PathVariable Long commentId) {
