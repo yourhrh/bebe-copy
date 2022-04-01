@@ -4,6 +4,7 @@ package bebeShare.domain.comment;
 import bebeShare.BaseEntity;
 import bebeShare.domain.product.Product;
 import bebeShare.domain.user.User;
+import bebeShare.web.dto.CommentUpdateRequestsDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -47,12 +48,12 @@ public class Comment extends BaseEntity {
         this.commentStatus = commentStatus;
     }
 
-    public void update(Long id, Product product, User user, String commentContent, String deleteYn, String commentStatus) {
+    public void update(Long id, CommentUpdateRequestsDto c) {
         this.id = id;
-        this.product = product;
-        this.user = user;
-        this.commentContent = commentContent;
-        this.deleteYn = deleteYn;
-        this.commentStatus = commentStatus;
+        this.product = c.getProduct();
+        this.user = c.getUser();
+        this.commentContent = c.getCommentContent();
+        this.deleteYn = c.getDeletYn();
+        this.commentStatus = c.getCommentStatus();
     }
 }

@@ -42,12 +42,6 @@ public class CommentsService {
                     ()-> new CustomException(ErrorCode.INTERNAL_SERVER_ERROR)
             );
             entity.update(commentId,updateRequestsDto);
-//        commentRepository.findById(commentId).ifPresent(c -> {
-//            if (updateRequestsDto.getCommentContent() != null) {
-//                c.setCommentContent(updateRequestsDto.getCommentContent());
-//            }
-//            commentRepository.save(c);
-//        });
         return new CommentUpdateResponseDto(productId);
     }
 
