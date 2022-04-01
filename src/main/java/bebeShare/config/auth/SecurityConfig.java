@@ -19,13 +19,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-             .csrf().disable()
+                .csrf().disable()
                 .headers().frameOptions().disable()
                 .and()
                 .authorizeRequests()
                 .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()
+<<<<<<< HEAD
                 .antMatchers("/api/v1/**").hasRole(Role.USER.name())
 //                .anyRequest().authenticated()
+=======
+//                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
+                .anyRequest().authenticated()
+>>>>>>> feature/products
                 .and()
                 .logout()
                 .logoutSuccessUrl("/")

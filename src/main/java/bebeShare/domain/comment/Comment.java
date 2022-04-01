@@ -12,8 +12,12 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+<<<<<<< HEAD
 @Getter
 @Setter
+=======
+@Getter @Setter
+>>>>>>> feature/products
 @NoArgsConstructor
 @Entity
 public class Comment extends BaseEntity {
