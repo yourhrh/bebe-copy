@@ -31,7 +31,7 @@ public class ProductApiController {
         return productService.findAll();
     }
 
-    
+
     // 상품 게시글 상세 조회
     @ResponseBody
     @GetMapping("/products/{productId}")
