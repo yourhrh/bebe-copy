@@ -6,6 +6,8 @@ import bebeShare.domain.product.Product;
 import bebeShare.domain.product.ProductRepository;
 import bebeShare.domain.user.User;
 import bebeShare.domain.user.UserRepository;
+import bebeShare.exception.CustomException;
+import bebeShare.exception.ErrorCode;
 import bebeShare.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,15 +25,12 @@ public class CommentsService {
     @Transactional
     public CommentResponseDto save(CommentSaveRequestsDto requestsDto) {
 
-        User user = userRepository.findById(requestsDto.getMemberId()).orElseThrow(
-                () -> new IllegalArgumentException("해당하는 사용자가 없습니다. " + requestsDto.getMemberId())
-        );
-        Product product = productRepository.findById(requestsDto.getProductId()).orElseThrow(
-                () -> new IllegalArgumentException("해당하는 상품이 없습니다. " + requestsDto.getProductId())
-        );
-
+        User user = userRepository.findById(requestsDto.getMemberId())
+                .orElseThrow( () -> new CustomException(ErrorCode.USER_NOT_FOUND));
+        Product product = productRepository.findById(requestsDto.getProductId())
+                .orElseThrow(() -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
+        
         commentRepository.save(requestsDto.toEntity(user, product));
-
         return new CommentResponseDto(requestsDto.getProductId());
     }
 
