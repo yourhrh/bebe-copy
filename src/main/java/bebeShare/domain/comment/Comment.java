@@ -7,10 +7,11 @@ import bebeShare.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter
+@Getter @Setter
 @NoArgsConstructor
 @Entity
 public class Comment extends BaseEntity {
@@ -18,7 +19,7 @@ public class Comment extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "commentId")
-    private Long Id;
+    private Long id;
 
 
 
