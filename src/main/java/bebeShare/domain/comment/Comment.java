@@ -19,18 +19,16 @@ public class Comment extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comment_id")
+    @Column(name = "commentId")
     private Long id;
 
-
-
     @ManyToOne
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "productId")
     private Product product;
 
 
     @ManyToOne
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "memberId")
     private User user;
 
     private String commentContent;
@@ -49,4 +47,12 @@ public class Comment extends BaseEntity {
         this.commentStatus = commentStatus;
     }
 
+    public void update(Long id, Product product, User user, String commentContent, String deleteYn, String commentStatus) {
+        this.id = id;
+        this.product = product;
+        this.user = user;
+        this.commentContent = commentContent;
+        this.deleteYn = deleteYn;
+        this.commentStatus = commentStatus;
+    }
 }

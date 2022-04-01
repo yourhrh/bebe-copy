@@ -26,22 +26,27 @@ public class CommentsService {
     public CommentResponseDto save(CommentSaveRequestsDto requestsDto) {
 
         User user = userRepository.findById(requestsDto.getMemberId())
-                .orElseThrow( () -> new CustomException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow( () -> new CustomException(ErrorCode.INTERNAL_SERVER_ERROR));
         Product product = productRepository.findById(requestsDto.getProductId())
-                .orElseThrow(() -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
-        
+                .orElseThrow(() -> new CustomException(ErrorCode.INTERNAL_SERVER_ERROR));
+
         commentRepository.save(requestsDto.toEntity(user, product));
+
         return new CommentResponseDto(requestsDto.getProductId());
     }
 
     @Transactional
     public CommentUpdateResponseDto update(Long productId, Long commentId, CommentUpdateRequestsDto updateRequestsDto) {
-        commentRepository.findById(commentId).ifPresent(c -> {
-            if (updateRequestsDto.getCommentContent() != null) {
-                c.setCommentContent(updateRequestsDto.getCommentContent());
-            }
-            commentRepository.save(c);
-        });
+            Comment entity = commentRepository.findById(commentId).orElseThrow(
+                    ()-> new CustomException(ErrorCode.INTERNAL_SERVER_ERROR)
+            );
+            entity.update(commentId,updateRequestsDto);
+//        commentRepository.findById(commentId).ifPresent(c -> {
+//            if (updateRequestsDto.getCommentContent() != null) {
+//                c.setCommentContent(updateRequestsDto.getCommentContent());
+//            }
+//            commentRepository.save(c);
+//        });
         return new CommentUpdateResponseDto(productId);
     }
 
