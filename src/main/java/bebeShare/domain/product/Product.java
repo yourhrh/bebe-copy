@@ -3,6 +3,7 @@ package bebeShare.domain.product;
 
 import bebeShare.BaseEntity;
 import bebeShare.domain.user.User;
+import bebeShare.web.dto.ProductCreateRequestDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -44,7 +45,8 @@ public class Product extends BaseEntity {
 
 
     @Builder
-    public Product(User user, String productName, String productContent,String productImage1, String productImage2, String productImage3, String productStatus, String productCategory ,String deleteYn) {
+    public Product(User user, String productName, String productContent,String productImage1, String productImage2, String productImage3, String productStatus, String productCategory ,String deleteYn
+    ,Long shareId) {
 
         this.user = user;
         this.productName = productName;
@@ -64,17 +66,16 @@ public class Product extends BaseEntity {
         user.getProducts().add(this);
     }
 
-    public void update(User user, String name, String productName, String productContent,
-                       String productImage1, String productImage2, String productImage3, String productStatus, String productCategory) {
-        this.user = user;
-        this.productName = productName;
-        this.productContent = productContent;
-        this.productImage2 = productImage2;
-        this.productImage3 = productImage3;
-        this.productImage1 = productImage1;
-        this.productStatus = productStatus;
-        this.productCategory = productCategory;
-        // 수정날짜가 필요한가?
+    public void update(ProductCreateRequestDto pro) {
+        this.id = pro.getProductId();
+        this.user = pro.getUser();
+        this.productName = pro.getProductName();
+        this.productContent = pro.getProductContent();
+        this.productImage2 = pro.getProductImage2();
+        this.productImage3 = pro.getProductImage3();
+        this.productImage1 = pro.getProductImage1();
+        this.productStatus = pro.getProductStatus();
+        this.productCategory = pro.getProductCategory();
     }
 
 }

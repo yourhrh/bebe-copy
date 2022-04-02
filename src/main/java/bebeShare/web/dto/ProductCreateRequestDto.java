@@ -7,6 +7,7 @@ import lombok.Getter;
 
 @Getter
 public class ProductCreateRequestDto {
+    private Long productId;
     private User user;
     private String productName;
     private String productContent;
@@ -16,6 +17,19 @@ public class ProductCreateRequestDto {
     private String productCategory;
     private String productStatus;
     private String deleteYn;
+
+    public ProductCreateRequestDto() {
+        this.productId = productId;
+        this.user = user;
+        this.productName = productName;
+        this.productContent = productContent;
+        this.productImage1 = productImage1;
+        this.productImage2 = productImage2;
+        this.productImage3 = productImage3;
+        this.productCategory = productCategory;
+        this.productStatus = productStatus;
+        this.deleteYn = deleteYn;
+    }
 
 
     public Product toEntity() {

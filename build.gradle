@@ -51,6 +51,9 @@ dependencies {
 
     implementation "io.springfox:springfox-boot-starter:3.0.0"
 
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis:2.4.2'
+    implementation 'org.springframework.session:spring-session-data-redis:2.4.2'
+
 
 
 }
