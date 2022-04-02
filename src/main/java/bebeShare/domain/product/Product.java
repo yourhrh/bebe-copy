@@ -44,7 +44,8 @@ public class Product extends BaseEntity {
 
 
     @Builder
-    public Product(User user, String productName, String productContent,String productImage1, String productImage2, String productImage3, String productStatus, String productCategory ,String deleteYn) {
+    public Product(User user, String productName, String productContent,String productImage1, String productImage2, String productImage3, String productStatus, String productCategory ,String deleteYn
+    ,Long shareId) {
 
         this.user = user;
         this.productName = productName;
