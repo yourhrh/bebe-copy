@@ -7,6 +7,7 @@ import bebeShare.domain.user.User;
 import bebeShare.service.CommentsService;
 import bebeShare.web.dto.CommentUpdateRequestsDto;
 import lombok.AllArgsConstructor;
+import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,15 +30,17 @@ public class CommentApiControllerTest {
     @Test
     public void 댓글작성() throws Exception {
         //given
+        String testComment = "This is test content";
+
         Comment comment = new Comment();
         comment.setId(123L);
-        comment.setCommentContent("CONTENTSSS");
+        comment.setCommentContent(testComment);
 
         //when
         Comment newComment = commentRepository.save(comment);
 
         //then
-        Assert.assertEquals(newComment.getId(), "123L");
+        Assertions.assertThat(newComment.getCommentContent()).isEqualTo(testComment);
     }
 
 
@@ -60,18 +63,19 @@ public class CommentApiControllerTest {
 //    }
 
     @Test
-    public void delete() throws Exception {
-        //given
-        Optional<Comment> comment = commentRepository.findById(14L);
+    public void 댓글삭제() throws Exception {
 
-        Assert.assertTrue(comment.isPresent());
+        //given
+        Comment comment = new Comment();
+        comment.setId(123L);
+        comment.setCommentContent("This is test content");
+
+        commentRepository.save(comment);
 
         //when
-        comment.ifPresent(c -> {
-            commentRepository.delete(c);
-        });
+        commentRepository.delete(comment);
 
-        Optional<Comment> deleteComment = commentRepository.findById(14L);
+        Optional<Comment> deleteComment = commentRepository.findById(123L);
 
         //then
         Assert.assertFalse(deleteComment.isPresent());
