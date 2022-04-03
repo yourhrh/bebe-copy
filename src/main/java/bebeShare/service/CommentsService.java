@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +27,7 @@ public class CommentsService {
     public CommentResponseDto save(CommentSaveRequestsDto requestsDto) {
 
         User user = userRepository.findById(requestsDto.getMemberId())
-                .orElseThrow( () -> new CustomException(ErrorCode.INTERNAL_SERVER_ERROR));
+                .orElseThrow(() -> new CustomException(ErrorCode.INTERNAL_SERVER_ERROR));
         Product product = productRepository.findById(requestsDto.getProductId())
                 .orElseThrow(() -> new CustomException(ErrorCode.INTERNAL_SERVER_ERROR));
 
@@ -38,10 +38,10 @@ public class CommentsService {
 
     @Transactional
     public CommentUpdateResponseDto update(Long productId, Long commentId, CommentUpdateRequestsDto updateRequestsDto) {
-            Comment entity = commentRepository.findById(commentId).orElseThrow(
-                    ()-> new CustomException(ErrorCode.INTERNAL_SERVER_ERROR)
-            );
-            entity.update(commentId,updateRequestsDto);
+        Comment entity = commentRepository.findById(commentId).orElseThrow(
+                () -> new CustomException(ErrorCode.INTERNAL_SERVER_ERROR)
+        );
+        entity.update(commentId, updateRequestsDto);
         return new CommentUpdateResponseDto(productId);
     }
 

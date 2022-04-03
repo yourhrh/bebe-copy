@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CategoryApiController {
     private final CategoryService categoryService;
 
-    //카테고리 조회
+    // 카테고리 조회
     @GetMapping("/categories")
     public void lookupCategory(@RequestParam String code){
         categoryService.lookup(code);
