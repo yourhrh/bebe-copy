@@ -21,10 +21,6 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
 
-        - name: build gradle
-          run: ./gradlew build --exclude-task test
-          shell: bash
-      
       - name: deploy to heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
