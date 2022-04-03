@@ -54,7 +54,7 @@ public class Comment extends BaseEntity {
         this.product = c.getProduct();
         this.user = c.getUser();
         this.commentContent = c.getCommentContent();
-        this.deleteYn = c.getDeletYn();
+        this.deleteYn = c.getDeleteYn();
         this.commentStatus = c.getCommentStatus();
     }
 }
