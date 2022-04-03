@@ -49,7 +49,7 @@ public class ProductApiController {
     public String test() {
         throw new CustomException(ErrorCode.POSTS_NOT_FOUND);
     }
-    
+
     // 상품 게시글 삭제
     @DeleteMapping("/products/{productId}")
     public void delete(@PathVariable Long id){
