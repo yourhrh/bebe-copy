@@ -17,6 +17,7 @@ public class CommentSaveRequestsDto {
     private Long memberId;
     private String commentContent;
 
+    
     public Comment toEntity(User user, Product product) {
         return Comment.builder()
                 .user(user)
