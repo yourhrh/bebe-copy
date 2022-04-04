@@ -66,7 +66,6 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
                 .fetch();
     }
 
-    //        @Query(value = "select p from Dibs d join d.product p join d.user u where u.id =:#{#userRequest.memberId}",
     @Override
     public List<LikeInfoResponseDto> likeInfo(UserRequest userRequest) {
 
