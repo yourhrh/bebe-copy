@@ -3,15 +3,6 @@
 
 
 spring:
-  redis:
-    host: 127.0.0.1
-    port: 6379
-  session:
-    store-type: redis
-    redis:
-      flush-mode: on_save
-
-
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://211.105.66.96:3306/bebeShare
@@ -25,6 +16,19 @@ spring:
     database-platform: org.hibernate.dialect.MariaDBDialect
   profiles:
     include: oauth
+
+
+  messages:
+    basename: messages,config,i18n.messages
+    encoding: UTF-8
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  session:
+    store-type: redis
+    redis:
+      flush-mode: on_save
 
 logging:
   level:

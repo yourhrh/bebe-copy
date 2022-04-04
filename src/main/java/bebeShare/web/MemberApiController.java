@@ -1,13 +1,9 @@
 package bebeShare.web;
 
-import bebeShare.config.auth.LoginUser;
-import bebeShare.config.auth.dto.SessionUser;
 import bebeShare.service.UserService;
-//import bebeShare.web.userDto.UserResponseDto;
 import bebeShare.web.userDto.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 

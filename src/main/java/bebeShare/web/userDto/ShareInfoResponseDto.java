@@ -19,19 +19,6 @@ public class ShareInfoResponseDto {
     private String productImage1;
     private LocalDateTime insertDt;
 
-    public ShareInfoResponseDto(Long productId, String productName,LocalDateTime createDate) {
-        this.productId = productId;
-        this.productName   = productName;
-        this.insertDt      = createDate;
-    }
-
-    public ShareInfoResponseDto(Product product) {
-        this.productId = product.getId();
-        this.productName   = product.getProductName();
-        this.productImage1   = product.getProductImage1();
-        this.insertDt      = product.getCreatedDate();
-    }
-
     @QueryProjection //의존적이게 되 단점
     public ShareInfoResponseDto(Long productId, String productName, String productImage1, LocalDateTime insertDt) {
         this.productId = productId;
