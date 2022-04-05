@@ -4,7 +4,8 @@ package bebeShare.domain.comment;
 import bebeShare.BaseEntity;
 import bebeShare.domain.product.Product;
 import bebeShare.domain.user.User;
-import bebeShare.web.dto.CommentUpdateRequestsDto;
+import bebeShare.web.dto.commentDto.CommentDeleteRequestDto;
+import bebeShare.web.dto.commentDto.CommentUpdateRequestsDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -56,5 +57,8 @@ public class Comment extends BaseEntity {
         this.commentContent = c.getCommentContent();
         this.deleteYn = c.getDeleteYn();
         this.commentStatus = c.getCommentStatus();
+    }
+    public void delete(CommentDeleteRequestDto c){
+        this.deleteYn = c.getDeleteYn();
     }
 }

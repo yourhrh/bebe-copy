@@ -3,7 +3,7 @@ package bebeShare.web;
 import bebeShare.config.auth.LoginUser;
 import bebeShare.config.auth.dto.SessionUser;
 import bebeShare.service.CommentsService;
-import bebeShare.web.dto.*;
+import bebeShare.web.dto.commentDto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +31,9 @@ public class CommentApiController {
 
     // 상품 댓글 삭제
     @DeleteMapping("/{productId}/comments/{commentId}")
-    public CommentDeleteResponseDto delete(@PathVariable Long productId, @PathVariable Long commentId) {
-        return commentsService.delete(productId, commentId);
+    public CommentDeleteResponseDto delete(@PathVariable Long productId, @PathVariable Long commentId,
+                                           @RequestBody CommentDeleteRequestDto params) {
+
+        return commentsService.delete(productId, commentId,params);
     }
 }
