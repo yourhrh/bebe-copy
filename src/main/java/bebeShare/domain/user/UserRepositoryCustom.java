@@ -1,8 +1,6 @@
 package bebeShare.domain.user;
 
-import bebeShare.web.userDto.*;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import bebeShare.web.dto.userDto.*;
 
 import java.util.List;
 
