@@ -10,9 +10,12 @@ import bebeShare.exception.CustomException;
 import bebeShare.exception.ErrorCode;
 import bebeShare.web.dto.commentDto.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -36,6 +39,12 @@ public class CommentsService {
         return new CommentResponseDto(requestsDto.getProductId());
     }
 
+    public List<CommentFindAllResponseDto> findAll() {
+        Sort sort = Sort.by(Sort.Direction.DESC,"id");
+        List<Comment> list = commentRepository.findAll(sort);
+        return list.stream().map(CommentFindAllResponseDto::new).collect(Collectors.toList());
+    }
+
     @Transactional
     public CommentUpdateResponseDto update(Long productId, Long commentId, CommentUpdateRequestsDto updateRequestsDto) {
         Comment entity = commentRepository.findById(commentId).orElseThrow(
@@ -52,4 +61,6 @@ public class CommentsService {
         entity.delete(params);
         return new CommentDeleteResponseDto(productId);
     }
+
+
 }
