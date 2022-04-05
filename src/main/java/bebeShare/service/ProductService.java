@@ -2,12 +2,11 @@ package bebeShare.service;
 
 import bebeShare.domain.product.Product;
 import bebeShare.domain.product.ProductRepository;
-import bebeShare.domain.user.UserRepository;
 import bebeShare.exception.CustomException;
 import bebeShare.exception.ErrorCode;
-import bebeShare.web.dto.ProductCreateRequestDto;
-import bebeShare.web.dto.ProductDeleteDto;
-import bebeShare.web.dto.ProductResponseDto;
+import bebeShare.web.dto.productDto.ProductCreateRequestDto;
+import bebeShare.web.dto.productDto.ProductDeleteDto;
+import bebeShare.web.dto.productDto.ProductResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

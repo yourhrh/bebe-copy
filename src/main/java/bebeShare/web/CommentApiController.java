@@ -31,7 +31,9 @@ public class CommentApiController {
 
     // 상품 댓글 삭제
     @DeleteMapping("/{productId}/comments/{commentId}")
-    public CommentDeleteResponseDto delete(@PathVariable Long productId, @PathVariable Long commentId) {
-        return commentsService.delete(productId, commentId);
+    public CommentDeleteResponseDto delete(@PathVariable Long productId, @PathVariable Long commentId,
+                                           @RequestBody CommentDeleteRequestDto params) {
+
+        return commentsService.delete(productId, commentId,params);
     }
 }

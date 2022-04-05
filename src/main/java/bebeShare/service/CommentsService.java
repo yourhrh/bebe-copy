@@ -46,8 +46,10 @@ public class CommentsService {
     }
 
     @Transactional
-    public CommentDeleteResponseDto delete(Long productId, Long commentId) {
-        commentRepository.deleteById(commentId);
+    public CommentDeleteResponseDto delete(Long productId, Long commentId, CommentDeleteRequestDto params) {
+        Comment entity = commentRepository.findById(commentId).orElseThrow(()
+                -> new CustomException(ErrorCode.COMMENT_NOT_FOUND));
+        entity.delete(params);
         return new CommentDeleteResponseDto(productId);
     }
 }

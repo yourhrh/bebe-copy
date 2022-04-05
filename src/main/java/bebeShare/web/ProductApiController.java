@@ -3,10 +3,9 @@ package bebeShare.web;
 import bebeShare.exception.CustomException;
 import bebeShare.exception.ErrorCode;
 import bebeShare.service.ProductService;
-import bebeShare.web.dto.PostsResponseDto;
-import bebeShare.web.dto.ProductCreateRequestDto;
-import bebeShare.web.dto.ProductDeleteDto;
-import bebeShare.web.dto.ProductResponseDto;
+import bebeShare.web.dto.productDto.ProductCreateRequestDto;
+import bebeShare.web.dto.productDto.ProductDeleteDto;
+import bebeShare.web.dto.productDto.ProductResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
