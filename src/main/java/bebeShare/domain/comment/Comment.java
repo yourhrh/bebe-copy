@@ -4,7 +4,7 @@ package bebeShare.domain.comment;
 import bebeShare.BaseEntity;
 import bebeShare.domain.product.Product;
 import bebeShare.domain.user.User;
-import bebeShare.web.dto.CommentUpdateRequestsDto;
+import bebeShare.web.dto.commentDto.CommentUpdateRequestsDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

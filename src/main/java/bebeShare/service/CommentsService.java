@@ -8,7 +8,7 @@ import bebeShare.domain.user.User;
 import bebeShare.domain.user.UserRepository;
 import bebeShare.exception.CustomException;
 import bebeShare.exception.ErrorCode;
-import bebeShare.web.dto.*;
+import bebeShare.web.dto.commentDto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
