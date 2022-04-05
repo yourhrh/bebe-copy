@@ -2,7 +2,8 @@
 # active profile
 spring:
   profiles:
-    active: local
+    activate:
+      on-profile: local
 
   # DB
   datasource:

@@ -1,7 +1,6 @@
 package bebeShare.domain.user;
 
 import bebeShare.web.dto.userDto.*;
-import bebeShare.web.userDto.*;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
