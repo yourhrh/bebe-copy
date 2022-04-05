@@ -1,4 +1,4 @@
-package bebeShare.web.dto;
+package bebeShare.web.dto.commentDto;
 
 import bebeShare.domain.comment.Comment;
 import bebeShare.domain.posts.Posts;

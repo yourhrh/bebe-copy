@@ -1,4 +1,4 @@
-package bebeShare.web.dto;
+package bebeShare.web.dto.codeDto;
 
 import bebeShare.domain.code.Code;
 import lombok.Getter;
