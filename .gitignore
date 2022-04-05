@@ -6,7 +6,7 @@
 *.class
 out/
 InitClass.java
-
+.idea
 
 # Log file
 *.log
