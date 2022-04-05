@@ -2,6 +2,7 @@ package bebeShare.web.dto.userDto;
 
 import bebeShare.domain.comment.Comment;
 import bebeShare.domain.product.Product;
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -16,11 +17,14 @@ public class MemberCommentResponseDto {
     private String commentContent;
     private LocalDateTime insertDt;
 
-    public MemberCommentResponseDto(Comment comment) {
-        this.commentId = comment.getId();
-        this.productName   = comment.getProduct().getProductName();
-        this.commentContent = comment.getCommentContent();
-        this.insertDt      = comment.getCreatedDate();
+
+
+    @QueryProjection //의존적이게 되 단점
+    public MemberCommentResponseDto(Long commentId, String productName, String commentContent, LocalDateTime insertDt) {
+        this.commentId = commentId;
+        this.productName   = productName;
+        this.commentContent = commentContent;
+
     }
 
 }
