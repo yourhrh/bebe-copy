@@ -3,7 +3,8 @@ package bebeShare.domain.product;
 
 import bebeShare.BaseEntity;
 import bebeShare.domain.user.User;
-import bebeShare.web.dto.ProductCreateRequestDto;
+import bebeShare.web.dto.productDto.ProductCreateRequestDto;
+import bebeShare.web.dto.productDto.ProductDeleteDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -76,6 +77,10 @@ public class Product extends BaseEntity {
         this.productImage1 = pro.getProductImage1();
         this.productStatus = pro.getProductStatus();
         this.productCategory = pro.getProductCategory();
+    }
+
+    public void delete(ProductDeleteDto pro){
+        this.deleteYn = pro.getDeleteYn();
     }
 
 }

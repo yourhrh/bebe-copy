@@ -3,9 +3,9 @@ package bebeShare.web;
 import bebeShare.exception.CustomException;
 import bebeShare.exception.ErrorCode;
 import bebeShare.service.ProductService;
-import bebeShare.web.dto.PostsResponseDto;
-import bebeShare.web.dto.ProductCreateRequestDto;
-import bebeShare.web.dto.ProductResponseDto;
+import bebeShare.web.dto.productDto.ProductCreateRequestDto;
+import bebeShare.web.dto.productDto.ProductDeleteDto;
+import bebeShare.web.dto.productDto.ProductResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,8 +51,8 @@ public class ProductApiController {
     }
 
     // 상품 게시글 삭제
-    @DeleteMapping("/products/{productId}")
-    public void delete(@PathVariable Long id){
-        productService.delete(id);
+    @DeleteMapping("/products")
+    public void delete(@RequestBody ProductDeleteDto params){
+        productService.delete(params);
     }
 }

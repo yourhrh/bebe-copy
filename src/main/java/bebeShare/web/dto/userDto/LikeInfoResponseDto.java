@@ -23,6 +23,7 @@ public class LikeInfoResponseDto {
         this.productName = productName;
         this.productImage1 = productImage1;
         this.insertDt = insertDt;
+
     }
 
 }

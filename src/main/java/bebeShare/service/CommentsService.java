@@ -8,7 +8,7 @@ import bebeShare.domain.user.User;
 import bebeShare.domain.user.UserRepository;
 import bebeShare.exception.CustomException;
 import bebeShare.exception.ErrorCode;
-import bebeShare.web.dto.*;
+import bebeShare.web.dto.commentDto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,8 +46,10 @@ public class CommentsService {
     }
 
     @Transactional
-    public CommentDeleteResponseDto delete(Long productId, Long commentId) {
-        commentRepository.deleteById(commentId);
+    public CommentDeleteResponseDto delete(Long productId, Long commentId, CommentDeleteRequestDto params) {
+        Comment entity = commentRepository.findById(commentId).orElseThrow(()
+                -> new CustomException(ErrorCode.COMMENT_NOT_FOUND));
+        entity.delete(params);
         return new CommentDeleteResponseDto(productId);
     }
 }

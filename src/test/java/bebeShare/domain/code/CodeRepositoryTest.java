@@ -1,6 +1,6 @@
 package bebeShare.domain.code;
 
-import bebeShare.web.dto.CodeResponseDto;
+import bebeShare.web.dto.codeDto.CodeResponseDto;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
