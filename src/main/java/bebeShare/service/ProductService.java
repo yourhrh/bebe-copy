@@ -6,6 +6,7 @@ import bebeShare.domain.user.UserRepository;
 import bebeShare.exception.CustomException;
 import bebeShare.exception.ErrorCode;
 import bebeShare.web.dto.ProductCreateRequestDto;
+import bebeShare.web.dto.ProductDeleteDto;
 import bebeShare.web.dto.ProductResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
@@ -59,7 +60,9 @@ public class ProductService {
 
     // 상품 게시글 삭제
     @Transactional
-    public void delete(Long id) {
-        productRepository.deleteById(id);
+    public void delete(ProductDeleteDto params) {
+        Product entity = productRepository.findById(params.getProductId()).orElseThrow(()
+                -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
+        entity.delete(params);
     }
 }

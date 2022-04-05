@@ -1,20 +1,12 @@
 package bebeShare.domain.user;
 
-import bebeShare.domain.posts.Posts;
-import bebeShare.domain.posts.PostsRepository;
-import bebeShare.domain.product.Product;
 import bebeShare.domain.product.ProductRepository;
-import bebeShare.web.userDto.GiveInfoResponseDto;
-import bebeShare.web.userDto.LikeInfoResponseDto;
-import bebeShare.web.userDto.MemberCommentResponseDto;
-import bebeShare.web.userDto.ShareInfoResponseDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;

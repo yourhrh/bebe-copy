@@ -2,7 +2,8 @@ package bebeShare.domain.user;
 
 import bebeShare.domain.comment.Comment;
 import bebeShare.domain.product.Product;
-import bebeShare.web.userDto.*;
+import bebeShare.web.dto.userDto.UserRequest;
+import bebeShare.web.dto.userDto.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

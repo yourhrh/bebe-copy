@@ -4,21 +4,19 @@ import bebeShare.domain.comment.Comment;
 import bebeShare.domain.product.Product;
 import bebeShare.domain.user.User;
 import bebeShare.domain.user.UserRepository;
-import bebeShare.web.userDto.*;
+import bebeShare.web.dto.userDto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
-
 
     public UserResponseDto findById(Long id) {
         User entity = userRepository.findById(id)
@@ -30,6 +28,7 @@ public class UserService {
         Page<Product> products = userRepository.shareInfo(userRequest, pageable);
         return products.map(ShareInfoResponseDto::new);
     }
+
     public Page<GiveInfoResponseDto> giveInfo(UserRequest userRequest, Pageable pageable) {
         Page<Product> products = userRepository.giveInfo(userRequest, pageable);
         return products.map(GiveInfoResponseDto::new);
