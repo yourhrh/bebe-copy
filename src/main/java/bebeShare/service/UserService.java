@@ -2,7 +2,7 @@ package bebeShare.service;
 
 import bebeShare.domain.user.User;
 import bebeShare.domain.user.UserRepository;
-import bebeShare.web.userDto.*;
+import bebeShare.web.dto.userDto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,10 +1,7 @@
 package bebeShare.domain.user;
 
-import bebeShare.domain.posts.Posts;
-import bebeShare.domain.posts.PostsRepository;
-import bebeShare.domain.product.Product;
 import bebeShare.domain.product.ProductRepository;
-import bebeShare.web.userDto.*;
+import bebeShare.web.dto.userDto.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
