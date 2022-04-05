@@ -7,6 +7,8 @@ import bebeShare.web.dto.commentDto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/products")
@@ -21,6 +23,12 @@ public class CommentApiController {
         requestsDto.setProductId(productId);
         requestsDto.setMemberId(sessionUser.getId());
         return commentsService.save(requestsDto);
+    }
+
+    //상품 댓글 조회
+    @GetMapping("/products")
+    public List<CommentFindAllResponseDto> findAll(){
+        return commentsService.findAll();
     }
 
     // 상품 댓글 수정
