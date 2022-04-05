@@ -22,7 +22,7 @@ jobs:
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "bebeshare-deploy"
-          heroku_email: "ltwy0311@naver.com"
+          heroku_email: "blood_nail@naver.com"
 
 
 
