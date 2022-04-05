@@ -26,4 +26,5 @@ public class ShareInfoResponseDto {
         this.productImage1 = productImage1;
         this.insertDt = insertDt;
     }
+
 }

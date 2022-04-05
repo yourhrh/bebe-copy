@@ -9,15 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-;
-
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
-
 
     public UserResponseDto findById(Long id) {
         User entity = userRepository.findById(id)
