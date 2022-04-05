@@ -17,7 +17,7 @@ public class CommentUpdateRequestsDto {
     private Long productId;
     private Long memberId;
     private String commentContent;
-    private String deletYn;
+    private String deleteYn;
     private String commentStatus;
 
     @Builder
