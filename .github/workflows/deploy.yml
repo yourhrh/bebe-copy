@@ -42,9 +42,7 @@ jobs:
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           justlogin: true
-      - run: |
-          git remote add heroku git@heroku.com:bebeshare-deploy.git
-          git push heroku develop
+
 
 
 
