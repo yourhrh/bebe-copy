@@ -43,19 +43,26 @@
 #          heroku_email: ${{secrets.HEROKU_EMAIL}}
 #          justlogin: true
 
-name: CI
+name: bebeShare_Deploy
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ develop , main ]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: java setup
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '8'
+      - name: checkout
         uses: actions/checkout@v2
+
+      - name: deploy to heroku
       - uses: akhileshns/heroku-deploy@master
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
