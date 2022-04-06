@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface CodeRepository extends JpaRepository<Code, Long> {
 
-    @Query("select new bebeShare.web.dto.CodeResponseDto(c) from Code c where c.code = :code")
+    @Query("select new bebeShare.web.dto.codeDto.CodeResponseDto(c) from Code c where c.code = :code")
     List<CodeResponseDto> lookup(@Param("code") String code);
 }

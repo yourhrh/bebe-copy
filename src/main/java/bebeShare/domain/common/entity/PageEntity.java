@@ -1,4 +1,4 @@
-package bebeShare.domain.common;
+package bebeShare.domain.common.entity;
 
 import lombok.Getter;
 import lombok.Setter;
