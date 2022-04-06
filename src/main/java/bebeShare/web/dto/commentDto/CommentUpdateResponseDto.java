@@ -3,6 +3,9 @@ package bebeShare.web.dto.commentDto;
 import bebeShare.domain.common.entity.ResEntity;
 import lombok.Getter;
 
+import static bebeShare.domain.common.CommonContants.COMMENT_UPDATE_OK;
+import static bebeShare.domain.common.ResponeMsgEnum.RESPONES_SUCCESS;
+
 @Getter
 public class CommentUpdateResponseDto extends ResEntity {
 
@@ -11,8 +14,8 @@ public class CommentUpdateResponseDto extends ResEntity {
     private Long productId;
 
     public CommentUpdateResponseDto(Long productId) {
-        this.setResultCode("000");
-        this.setResultMsg("댓글 수정 성공");
+        this.setResultCode(RESPONES_SUCCESS.getValue());
+        this.setResultMsg(COMMENT_UPDATE_OK);
         this.productId = productId;
     }
 }
