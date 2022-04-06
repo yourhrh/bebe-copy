@@ -1,10 +1,6 @@
 package bebeShare.web.dto.commentDto;
 
-import bebeShare.domain.comment.Comment;
-import bebeShare.domain.posts.Posts;
 import lombok.Getter;
-
-import java.time.LocalDateTime;
 
 @Getter
 public class CommentResponseDto {
