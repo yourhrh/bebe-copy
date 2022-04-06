@@ -1,29 +1,50 @@
-name: deploy
+#name: deploy
+#
+#on:
+#  push:
+#    branches: [ develop ]
+#
+#jobs:
+#  build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: checkout
+#        uses: actions/checkout@v2
+#
+#      - name: java setup
+#        uses: actions/setup-java@v2
+#        with:
+#          distribution: 'temurin'
+#          java-version: '8'
+#
+#      - name: deploy to heroku
+#        uses: akhileshns/heroku-deploy@v3.12.12
+#        with:
+#          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+#          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+#          heroku_email: ${{secrets.HEROKU_EMAIL}}
 
 on:
   push:
-    branches: [ develop ]
+    branches:
+      - develop
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: checkout
+      - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: java setup
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'temurin'
-          java-version: '8'
-
-      - name: deploy to heroku
-        uses: akhileshns/heroku-deploy@v3.12.12
+      - uses: akhileshns/heroku-deploy@master
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
-
+          justlogin: true
+      - run: |
+          git remote add heroku git@heroku.com:bebeshare-deploy.git
+          git push heroku develop
 
 
 
